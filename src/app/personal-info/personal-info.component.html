@@ -1,0 +1,102 @@
+<form #f="ngForm" (ngsubmit)="submit(f)">
+
+    <div style="text-align:center">
+
+
+
+        <h1>
+            Candidate Interview Evaluation Form
+        </h1>
+        <p>Note: All fields are mandatory</p>
+
+    </div>
+
+
+
+
+
+
+    <div class="form-group" id="content" #content>
+
+        <label for="Name">
+            <h4>Name of Candidate:</h4>
+            <h5 [hidden]='true'>{{Name.value}}</h5>
+        </label>
+        <input type="text" id="Name" class="form-control" ngModel name="Name" #Name="ngModel" required>
+        <div class="alert alert-danger" *ngIf="Name.touched && !Name.valid">Name is required</div>
+        <br>
+        <label for="Id">
+            <h4>Id of candidate: </h4>
+            <h5 [hidden]='true'>{{Id.value}}</h5>
+
+        </label>
+
+        <input type="text" id="Id" class="form-control" required ngModel name="Id" #Id="ngModel">
+        <div class="alert alert-danger" *ngIf="Id.touched && !Id.valid">Id is required</div>
+        <br>
+        <label for="Post">
+            <h4>Post Applied for:</h4>
+            <h5 [hidden]='true'>{{Post.value}}</h5>
+
+        </label>
+        <input type="text" id="Post" class="form-control" ngModel name="Post" #Post="ngModel" required>
+        <div class="alert alert-danger" *ngIf="Post.touched && !Post.valid">Post Applied for is required</div>
+
+
+
+
+        <label for="Date">
+            <h4>Date:</h4>
+            <h5 [hidden]='true'>{{Date.value}}</h5>
+
+        </label>
+        <input type="date" class="form-control" ngModel name="Date" #Date="ngModel" required>
+        <div class="alert alert-danger" *ngIf="Date.touched && !Date.valid">Date is required</div>
+        <br>
+        <label for="Interviewed By">
+            <h4>Interviewed By:</h4>
+            <h5 [hidden]='true'>{{InterviewedBy.value}}</h5>
+
+        </label>
+        <input type="text" class="form-control" ngModel name="InterviewedBy" #InterviewedBy="ngModel" required>
+        <div class="alert alert-danger" *ngIf="InterviewedBy.touched && !InterviewedBy.valid">Interviewed By is
+            required
+        </div>
+        <br>
+        <div class="form-group">
+            <label for="ratings">
+                <h4>HTML5 skill rating: </h4>
+                <h5 [hidden]='true'>{{Rating.value}}</h5>
+
+            </label>
+            <select ngModel name="Rating" id="Rating" #Rating="ngModel" class="form-control" required>
+                <option *ngFor="let rating of Ratings" [value]="rating.id">{{rating.name}}</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="ratings">
+                <h4>CSS skill rating: </h4>
+                <h5 [hidden]='true'>{{Ratings1.value}}</h5>
+
+            </label>
+            <select ngModel name="Ratings1" id="Ratings1" #Ratings1="ngModel" class="form-control" required>
+                <option *ngFor="let rating of Ratings" [value]="rating.id">{{rating.name}}</option>
+            </select>
+        </div>
+
+
+        <div class="form-group">
+            <label for="ratings">
+                <h4>AngularJS skill rating: </h4>
+                <h5 [hidden]='true'>{{Ratings2.value}}</h5>
+
+            </label>
+            <select ngModel name="Ratings2" id="Ratings2" #Ratings2="ngModel" class="form-control" required>
+                <option *ngFor="let rating of Ratings" [value]="rating.id">{{rating.name}}</option>
+            </select>
+        </div>
+
+    </div>
+    <button class="btn btn-primary" [disabled]="!f.valid" (click)="downloadPDF(f.value)">Export to pdf</button>
+</form>

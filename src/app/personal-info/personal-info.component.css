@@ -1,0 +1,21 @@
+input{
+    width:250px;
+    margin:auto;
+}
+select{
+    width:250px;
+    margin:auto;
+}
+
+h1{
+    font-family: 'Times New Roman', Times, serif;
+    
+}
+p{
+    color:red;
+    margin-left:-390px;
+}
+h5{
+    margin:auto;
+}
+
